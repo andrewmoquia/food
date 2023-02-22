@@ -1,13 +1,24 @@
 import { View, StyleSheet, TextInput } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { ISearchBar } from '../interface/SearchBarInterface';
 
-const SearchBar = () => {
+const SearchBar = (props: ISearchBar) => {
+    const { searchInput, onSearch, onSearchEnd } = props;
     return (
         <View style={styles.searchBar}>
             <View style={styles.searchIcon}>
                 <Feather name='search' size={24} color='black' />
             </View>
-            <TextInput style={styles.searchText} placeholder='Search hotel...' />
+
+            <TextInput
+                style={styles.searchText}
+                placeholder='Search hotel...'
+                value={searchInput}
+                onChangeText={(value) => onSearch(value)}
+                autoCapitalize='none'
+                autoCorrect={false}
+                onEndEditing={() => onSearchEnd()}
+            />
         </View>
     );
 };
