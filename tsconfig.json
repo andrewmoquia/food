@@ -1,6 +1,43 @@
 {
   "compilerOptions": {
-    "outDir": "./build"
+    "jsx": "react-native",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": [
+      "ESNext"
+    ],
+    "allowJs": true,
+    "outDir": "dist",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "types": ["react-native"],
+    "baseUrl": ".",
+    "paths": {
+        "@components/*": ["src/components/*"],
+    }
   },
-  "extends": "./node_modules/expo/tsconfig.base.json",
+  "include": [
+    "src/**/*", "App.tsx", 
+  ],
+  "extends": "expo/tsconfig.base"
 }

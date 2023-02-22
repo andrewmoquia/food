@@ -8,9 +8,13 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "clean": "react-native-clean-project-auto"
   },
   "dependencies": {
+    "@expo/vector-icons": "^13.0.0",
+    "@react-navigation/native": "^6.1.4",
+    "@react-navigation/native-stack": "^6.9.10",
     "expo": "^47.0.13",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
@@ -24,14 +28,21 @@
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.70.6",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "babel-plugin-module-resolver": "^5.0.0",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx": "^0.1.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-native": "^4.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
+    "react-native-clean-project": "^4.0.1",
     "typescript": "^4.9.5"
   },
   "lint-stage": {
