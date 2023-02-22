@@ -3,7 +3,7 @@ import { Feather } from '@expo/vector-icons';
 import { ISearchBar } from '../interface/SearchBarInterface';
 
 const SearchBar = (props: ISearchBar) => {
-    const { searchInput, onSearch, onSearchEnd } = props;
+    const { searchInput, onSearchInput, onSearchEnd } = props;
     return (
         <View style={styles.searchBar}>
             <View style={styles.searchIcon}>
@@ -14,7 +14,7 @@ const SearchBar = (props: ISearchBar) => {
                 style={styles.searchText}
                 placeholder='Search hotel...'
                 value={searchInput}
-                onChangeText={(value) => onSearch(value)}
+                onChangeText={(value) => onSearchInput(value)}
                 autoCapitalize='none'
                 autoCorrect={false}
                 onEndEditing={() => onSearchEnd()}

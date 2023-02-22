@@ -1,5 +1,5 @@
 export interface ISearchBar {
     searchInput: string;
-    onSearch: (value: string) => void;
+    onSearchInput: (value: string) => void;
     onSearchEnd: () => void;
 }

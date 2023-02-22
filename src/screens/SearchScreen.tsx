@@ -19,7 +19,7 @@ const SearchScreen = () => {
         <View>
             <SearchBar
                 searchInput={searchInput}
-                onSearch={handleSearchActivity}
+                onSearchInput={handleSearchActivity}
                 onSearchEnd={handleSearchSubmitActivity}
             />
             <Text>{searchInput}</Text>
