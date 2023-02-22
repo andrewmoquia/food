@@ -1,0 +1,11 @@
+import { View, Text } from 'react-native';
+
+const SearchBar = () => {
+    return (
+        <View>
+            <Text>Search Bar</Text>
+        </View>
+    );
+};
+
+export default SearchBar;

@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 
-const SearchComponent = () => {
+const SearchScreen = () => {
     return (
         <View>
             <Text>Search Screen!</Text>
@@ -8,4 +8,4 @@ const SearchComponent = () => {
     );
 };
 
-export default SearchComponent;
+export default SearchScreen;
