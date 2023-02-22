@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const App = () => {
     return (
         <View style={styles.container}>
-            <Text>Open up App.tsx to start working on your app!</Text>
+            <Text>Change github username!</Text>
             <StatusBar style='auto' />
         </View>
     );
@@ -13,7 +13,7 @@ const App = () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#ffff',
         flex: 1,
         justifyContent: 'center',
     },
