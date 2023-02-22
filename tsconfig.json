@@ -39,6 +39,5 @@
   "include": [
     "src/**/*", "App.tsx", 
   ],
-  "exclude": ["babel.config.js"],
   "extends": "expo/tsconfig.base"
 }
