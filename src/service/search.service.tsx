@@ -15,6 +15,7 @@ export const searchApi = async (params: ISearchApi): Promise<ISearchApiResponse>
         };
 
         const response = await axios(config);
+        console.log(response);
         return {
             status: response?.status || 400,
             data: response?.data?.businesses || response?.data || 'Unexpected error!',
