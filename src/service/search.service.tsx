@@ -1,13 +1,8 @@
 import axios from 'axios';
 import { yelpBaseUrl, yelpApiKey } from '../helper/config.helper';
+import { ISearchApi, ISearchApiResponse } from '../interface/SearchBarInterface';
 
-interface ISearchApi {
-    limit: number;
-    location: string;
-    term: string;
-}
-
-export const searchApi = async (params: ISearchApi) => {
+export const searchApi = async (params: ISearchApi): Promise<ISearchApiResponse> => {
     try {
         const config = {
             method: 'GET',
@@ -20,8 +15,12 @@ export const searchApi = async (params: ISearchApi) => {
         };
 
         const response = await axios(config);
-        return { status: response?.status || 400, data: response?.data || {} };
+        return {
+            status: response?.status || 400,
+            data: response?.data?.businesses || response?.data || 'Unexpected error!',
+        };
     } catch (error) {
-        return error;
+        const e = error as Error;
+        return { status: 500, data: e?.message };
     }
 };
