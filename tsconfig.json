@@ -9,7 +9,7 @@
     "allowJs": true,
     "outDir": "dist",
     "noEmit": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -39,5 +39,6 @@
   "include": [
     "src/**/*", "App.tsx", 
   ],
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "typeRoots": ["./src/types"]
 }
