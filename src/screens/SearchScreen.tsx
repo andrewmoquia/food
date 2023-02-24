@@ -1,26 +1,31 @@
 import { Text, View } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import { useState } from 'react';
+import { searchApi } from '../service/search.service';
 
 const SearchScreen = () => {
     const defSearchInput = '';
 
     const [searchInput, setSearchInput] = useState(defSearchInput);
 
-    const handleSearchActivity = (value: string) => {
+    const handleOnSearchInput = (value: string) => {
         setSearchInput(value);
     };
 
-    const handleSearchSubmitActivity = () => {
+    const handleOnSearchEnd = async () => {
         console.log('Submitted');
+
+        const searchResult = await searchApi(searchInput);
+
+        console.log(searchResult);
     };
 
     return (
         <View>
             <SearchBar
                 searchInput={searchInput}
-                onSearchInput={handleSearchActivity}
-                onSearchEnd={handleSearchSubmitActivity}
+                onSearchInput={handleOnSearchInput}
+                onSearchEnd={handleOnSearchEnd}
             />
             <Text>{searchInput}</Text>
         </View>

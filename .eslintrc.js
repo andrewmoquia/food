@@ -40,5 +40,6 @@ module.exports = {
         ],
         '@typescript-eslint/no-namespace': 'error',
         'import/namespace': 'off',
+        '@typescript-eslint/no-explicit-any': 'warn',
     },
 };
