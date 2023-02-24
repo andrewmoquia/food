@@ -15,7 +15,11 @@ const SearchScreen = () => {
     const handleOnSearchEnd = async () => {
         console.log('Submitted');
 
-        const searchResult = await searchApi(searchInput);
+        const searchResult = await searchApi({
+            limit: 3,
+            term: searchInput,
+            location: 'NYC',
+        });
 
         console.log(searchResult);
     };
