@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { yelpBaseUrl, yelpApiKey } from '../helper/config.helper';
-import { ISearchApi, ISearchApiResponse } from '../interface/SearchBarInterface';
+import { ISearchApiParams, ISearchApiResponse } from '../interface/search.interface';
 
-export const searchApi = async (params: ISearchApi): Promise<ISearchApiResponse> => {
+export const searchApi = async (params: ISearchApiParams): Promise<ISearchApiResponse> => {
     try {
         const config = {
             method: 'GET',
@@ -21,6 +21,6 @@ export const searchApi = async (params: ISearchApi): Promise<ISearchApiResponse>
         };
     } catch (error) {
         const e = error as Error;
-        return { status: 500, data: e?.message };
+        return { status: 500, data: e?.message || 'Something went wrong!' };
     }
 };

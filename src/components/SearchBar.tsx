@@ -1,6 +1,6 @@
 import { View, StyleSheet, TextInput } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { ISearchBar } from '../interface/SearchBarInterface';
+import { ISearchBar } from '../interface/search.interface';
 
 const SearchBar = (props: ISearchBar) => {
     const { searchInput, onSearchInput, onSearchEnd } = props;

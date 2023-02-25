@@ -4,7 +4,7 @@ export interface ISearchBar {
     onSearchEnd: () => void;
 }
 
-export interface ISearchApi {
+export interface ISearchApiParams {
     limit: number;
     location: string;
     term: string;

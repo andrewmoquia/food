@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import { useState, useEffect } from 'react';
 import { searchApi } from '../service/search.service';
-import { ISearchApiResponse, ISearchData } from '../interface/SearchBarInterface';
+import { ISearchApiResponse, ISearchData } from '../interface/search.interface';
 
 const SearchScreen = () => {
     const defSearchInput = '';
@@ -15,39 +15,23 @@ const SearchScreen = () => {
     const [errorMessage, setErrorMessage] = useState(defErrorMessage);
     const [isInitialSearchTrigged, setInitialSearchTriggered] = useState(defIsInitialSearchTrigged);
 
-    const handleOnSearchInput = (value: string) => setSearchInput(value);
-
-    const handleOnSearchEnd = async () => {
+    const sendSearchRequest = async (term: string) => {
         const response: ISearchApiResponse = await searchApi({
             limit: 3,
-            term: searchInput,
+            term,
             location: 'NYC',
         });
-        if (response.status >= 200 && response.status <= 300) {
-            setSearchResult(response.data as unknown as ISearchData[]);
-        } else {
-            setErrorMessage(response.data as unknown as string);
-        }
+        response.status >= 200 && response.status <= 300
+            ? setSearchResult(response.data as unknown as ISearchData[])
+            : setErrorMessage(response.data as unknown as string);
     };
 
-    useEffect(() => {
-        if (isInitialSearchTrigged === false) {
-            (async () => {
-                const response = await searchApi({
-                    limit: 3,
-                    term: 'food',
-                    location: 'NYC',
-                });
-                console.log(response);
-                if (response.status >= 200 && response.status <= 300) {
-                    setSearchResult(response.data as unknown as ISearchData[]);
-                } else {
-                    setErrorMessage(response.data as unknown as string);
-                }
-            })();
-        }
+    const handleOnSearchInput = (value: string) => setSearchInput(value);
+    const handleOnSearchEnd = () => sendSearchRequest(searchInput);
 
-        setInitialSearchTriggered(true);
+    useEffect(() => {
+        if (isInitialSearchTrigged === false) sendSearchRequest('food');
+        return () => setInitialSearchTriggered(true);
     }, [isInitialSearchTrigged]);
 
     return (
@@ -57,7 +41,6 @@ const SearchScreen = () => {
                 onSearchInput={handleOnSearchInput}
                 onSearchEnd={handleOnSearchEnd}
             />
-            <Text>{searchInput}</Text>
             <Text>We have found {searchResult.length} result!</Text>
             <Text>{errorMessage}</Text>
         </View>
