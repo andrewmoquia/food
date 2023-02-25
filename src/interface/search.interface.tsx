@@ -47,3 +47,7 @@ export interface ISearchResultListProps {
     title: string;
     results: ISearchData[];
 }
+
+export interface ISearchResultItem {
+    item: ISearchData;
+}

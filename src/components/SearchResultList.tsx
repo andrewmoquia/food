@@ -1,5 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { ISearchResultListProps } from '../interface/search.interface';
+import SearchResultItem from '../components/SearchResultItemCard';
 
 const SearchResultList = (props: ISearchResultListProps) => {
     const { title, results } = props;
@@ -11,7 +12,7 @@ const SearchResultList = (props: ISearchResultListProps) => {
                 data={results}
                 keyExtractor={(result) => result.id}
                 renderItem={({ item }) => {
-                    return <Text>{item.name}</Text>;
+                    return <SearchResultItem item={item} />;
                 }}
             />
         </View>
