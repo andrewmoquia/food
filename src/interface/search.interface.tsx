@@ -1,4 +1,4 @@
-export interface ISearchBar {
+export interface ISearchBarProps {
     searchInput: string;
     onSearchInput: (value: string) => void;
     onSearchEnd: () => void;
@@ -41,4 +41,8 @@ export interface ISearchData {
     phone?: string;
     display_phone?: string;
     distance?: number;
+}
+
+export interface ISearchResultListProps {
+    title: string;
 }
