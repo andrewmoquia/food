@@ -14,7 +14,7 @@ export const useSearchActionHooks = () => {
     const sendSearchRequest = async (term: string) => {
         console.log('Searched term: ' + term);
         const response: ISearchApiResponse = await searchApi({
-            limit: 3,
+            limit: 50,
             term,
             location: 'NYC',
         });

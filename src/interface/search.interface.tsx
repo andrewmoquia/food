@@ -16,7 +16,7 @@ export interface ISearchApiResponse {
 }
 
 export interface ISearchData {
-    id?: string;
+    id: string;
     alias?: string;
     name?: string;
     image_url?: string;
