@@ -12,6 +12,10 @@ const SearchScreen = () => {
     const handleOnSearchInput = (value: string) => setSearchInput(value);
     const handleOnSearchEnd = () => sendSearchRequest(searchInput);
 
+    const filterSearchResultByPrice = (price: string) => {
+        return searchResult.filter((item) => item.price === price);
+    };
+
     return (
         <View>
             <SearchBar
@@ -19,11 +23,10 @@ const SearchScreen = () => {
                 onSearchInput={handleOnSearchInput}
                 onSearchEnd={handleOnSearchEnd}
             />
-            <Text>We have found {searchResult.length} result!</Text>
             {errorMessage && <Text>{errorMessage}</Text>}
-            <SearchResultList title='Cost Effective' />
-            <SearchResultList title='Bit Pricier' />
-            <SearchResultList title='Bit Spender' />
+            <SearchResultList title='Cost Effective' results={filterSearchResultByPrice('$')} />
+            <SearchResultList title='Bit Pricier' results={filterSearchResultByPrice('$$')} />
+            <SearchResultList title='Bit Spender' results={filterSearchResultByPrice('$$$')} />
         </View>
     );
 };

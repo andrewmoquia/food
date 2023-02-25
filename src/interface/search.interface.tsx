@@ -45,4 +45,5 @@ export interface ISearchData {
 
 export interface ISearchResultListProps {
     title: string;
+    results: ISearchData[];
 }
