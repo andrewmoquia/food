@@ -1,10 +1,10 @@
-export interface ISearchBar {
+export interface ISearchBarProps {
     searchInput: string;
     onSearchInput: (value: string) => void;
     onSearchEnd: () => void;
 }
 
-export interface ISearchApi {
+export interface ISearchApiParams {
     limit: number;
     location: string;
     term: string;
@@ -16,7 +16,7 @@ export interface ISearchApiResponse {
 }
 
 export interface ISearchData {
-    id?: string;
+    id: string;
     alias?: string;
     name?: string;
     image_url?: string;
@@ -41,4 +41,9 @@ export interface ISearchData {
     phone?: string;
     display_phone?: string;
     distance?: number;
+}
+
+export interface ISearchResultListProps {
+    title: string;
+    results: ISearchData[];
 }

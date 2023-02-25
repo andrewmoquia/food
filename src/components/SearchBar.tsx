@@ -1,8 +1,8 @@
 import { View, StyleSheet, TextInput } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { ISearchBar } from '../interface/SearchBarInterface';
+import { ISearchBarProps } from '../interface/search.interface';
 
-const SearchBar = (props: ISearchBar) => {
+const SearchBar = (props: ISearchBarProps) => {
     const { searchInput, onSearchInput, onSearchEnd } = props;
     return (
         <View style={styles.searchBar}>
@@ -30,7 +30,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: 'row',
         height: 50,
-        margin: 10,
+        marginBottom: 5,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10,
     },
     searchIcon: {
         alignItems: 'center',

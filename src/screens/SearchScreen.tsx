@@ -1,54 +1,20 @@
 import { Text, View } from 'react-native';
 import SearchBar from '../components/SearchBar';
-import { useState, useEffect } from 'react';
-import { searchApi } from '../service/search.service';
-import { ISearchApiResponse, ISearchData } from '../interface/SearchBarInterface';
+import { useState } from 'react';
+import { useSearchActionHooks } from '../hooks/search.hooks';
+import SearchResultList from '../components/SearchResultList';
 
 const SearchScreen = () => {
     const defSearchInput = '';
-    const defSearchResult: ISearchData[] = [];
-    const defErrorMessage = '';
-    const defIsInitialSearchTrigged = false;
-
     const [searchInput, setSearchInput] = useState(defSearchInput);
-    const [searchResult, setSearchResult] = useState(defSearchResult);
-    const [errorMessage, setErrorMessage] = useState(defErrorMessage);
-    const [isInitialSearchTrigged, setInitialSearchTriggered] = useState(defIsInitialSearchTrigged);
+    const { searchResult, errorMessage, sendSearchRequest } = useSearchActionHooks();
 
     const handleOnSearchInput = (value: string) => setSearchInput(value);
+    const handleOnSearchEnd = () => sendSearchRequest(searchInput);
 
-    const handleOnSearchEnd = async () => {
-        const response: ISearchApiResponse = await searchApi({
-            limit: 3,
-            term: searchInput,
-            location: 'NYC',
-        });
-        if (response.status >= 200 && response.status <= 300) {
-            setSearchResult(response.data as unknown as ISearchData[]);
-        } else {
-            setErrorMessage(response.data as unknown as string);
-        }
+    const filterSearchResultByPrice = (price: string) => {
+        return searchResult.filter((item) => item.price === price);
     };
-
-    useEffect(() => {
-        if (isInitialSearchTrigged === false) {
-            (async () => {
-                const response = await searchApi({
-                    limit: 3,
-                    term: 'food',
-                    location: 'NYC',
-                });
-                console.log(response);
-                if (response.status >= 200 && response.status <= 300) {
-                    setSearchResult(response.data as unknown as ISearchData[]);
-                } else {
-                    setErrorMessage(response.data as unknown as string);
-                }
-            })();
-        }
-
-        setInitialSearchTriggered(true);
-    }, [isInitialSearchTrigged]);
 
     return (
         <View>
@@ -57,9 +23,10 @@ const SearchScreen = () => {
                 onSearchInput={handleOnSearchInput}
                 onSearchEnd={handleOnSearchEnd}
             />
-            <Text>{searchInput}</Text>
-            <Text>We have found {searchResult.length} result!</Text>
-            <Text>{errorMessage}</Text>
+            {errorMessage && <Text>{errorMessage}</Text>}
+            <SearchResultList title='Cost Effective' results={filterSearchResultByPrice('$')} />
+            <SearchResultList title='Bit Pricier' results={filterSearchResultByPrice('$$')} />
+            <SearchResultList title='Bit Spender' results={filterSearchResultByPrice('$$$')} />
         </View>
     );
 };
