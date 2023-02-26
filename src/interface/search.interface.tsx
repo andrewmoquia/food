@@ -57,6 +57,6 @@ export interface ISearchResultItem {
 
 export interface ISearchScreenProps {
     navigation: {
-        navigate: () => void;
+        navigate: (value: string) => void;
     };
 }

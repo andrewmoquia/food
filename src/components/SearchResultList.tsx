@@ -6,6 +6,7 @@ const SearchResultList = (props: ISearchResultListProps) => {
     const { title, results, navigation } = props;
 
     const handleOnPressResulItemCard = () => navigation.navigate('ResultShowScreen');
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{title}</Text>
