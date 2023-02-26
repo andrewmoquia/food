@@ -65,8 +65,12 @@ export interface ISearchScreenProps {
     };
 }
 
-export interface IResultShowScreen {
+export interface IResultShowScreenProps {
     route?: {
         params: { id: string };
     };
+}
+
+export interface IResultData {
+    alias: string;
 }

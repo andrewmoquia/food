@@ -1,14 +1,30 @@
 import { Text, View } from 'react-native';
-import { IResultShowScreen } from '../interface/search.interface';
+import { IResultData, IResultShowScreenProps } from '../interface/search.interface';
+import { useState, useEffect } from 'react';
+import { searchOneApi } from '../service/search.service';
 
-const ResultShowScreen = ({ route }: IResultShowScreen) => {
+const ResultShowScreen = ({ route }: IResultShowScreenProps) => {
     const id = route?.params.id;
 
-    console.log(id);
+    const defResultValue: IResultData = {
+        alias: '',
+    };
+
+    const [result, setResult] = useState(defResultValue);
+
+    useEffect(() => {
+        if (id) {
+            (async () => {
+                const response = await searchOneApi(id);
+                console.log(response);
+                setResult(response.data as unknown as IResultData);
+            })();
+        }
+    }, [id]);
 
     return (
         <View>
-            <Text>Show Screen!</Text>
+            <Text>Show Screen! {result.alias}</Text>
         </View>
     );
 };
