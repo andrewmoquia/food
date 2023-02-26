@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
     imageContainer: {
         borderRadius: 10,
         height: 120,
+        marginBottom: 2,
+        marginRight: 13,
         width: 250,
     },
     textStyleOne: {
