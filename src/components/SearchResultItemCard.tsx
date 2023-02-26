@@ -17,10 +17,10 @@ const SearchResultItemCard = (props: ISearchResultItem) => {
 const styles = StyleSheet.create({
     imageContainer: {
         borderRadius: 10,
-        height: 250,
+        height: 120,
         marginBottom: 2,
         marginRight: 13,
-        width: 300,
+        width: 250,
     },
     textStyleOne: {
         fontSize: 18,

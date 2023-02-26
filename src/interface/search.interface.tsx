@@ -46,8 +46,17 @@ export interface ISearchData {
 export interface ISearchResultListProps {
     title: string;
     results: ISearchData[];
+    navigation: {
+        navigate: (value: string) => void;
+    };
 }
 
 export interface ISearchResultItem {
     item: ISearchData;
+}
+
+export interface ISearchScreenProps {
+    navigation: {
+        navigate: () => void;
+    };
 }

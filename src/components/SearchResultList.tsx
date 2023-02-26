@@ -1,9 +1,11 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ISearchResultListProps } from '../interface/search.interface';
 import SearchResultItemCard from '../components/SearchResultItemCard';
 
 const SearchResultList = (props: ISearchResultListProps) => {
-    const { title, results } = props;
+    const { title, results, navigation } = props;
+
+    const handleOnPressResulItemCard = () => navigation.navigate('ResultShowScreen');
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{title}</Text>
@@ -13,7 +15,11 @@ const SearchResultList = (props: ISearchResultListProps) => {
                 data={results}
                 keyExtractor={(result) => result.id}
                 renderItem={({ item }) => {
-                    return <SearchResultItemCard item={item} />;
+                    return (
+                        <TouchableOpacity onPress={handleOnPressResulItemCard}>
+                            <SearchResultItemCard item={item} />
+                        </TouchableOpacity>
+                    );
                 }}
             />
         </View>
