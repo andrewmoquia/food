@@ -43,11 +43,15 @@ export interface ISearchData {
     distance?: number;
 }
 
+interface ISearchResultListNavigateProps {
+    id: string;
+}
+
 export interface ISearchResultListProps {
     title: string;
     results: ISearchData[];
     navigation: {
-        navigate: (value: string) => void;
+        navigate: (value: string, { id }: ISearchResultListNavigateProps) => void;
     };
 }
 
@@ -58,5 +62,11 @@ export interface ISearchResultItem {
 export interface ISearchScreenProps {
     navigation: {
         navigate: (value: string) => void;
+    };
+}
+
+export interface IResultShowScreen {
+    route?: {
+        params: { id: string };
     };
 }

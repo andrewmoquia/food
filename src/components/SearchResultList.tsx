@@ -5,7 +5,9 @@ import SearchResultItemCard from '../components/SearchResultItemCard';
 const SearchResultList = (props: ISearchResultListProps) => {
     const { title, results, navigation } = props;
 
-    const handleOnPressResulItemCard = () => navigation.navigate('ResultShowScreen');
+    const handleOnPressResulItemCard = (id: string) => {
+        navigation.navigate('ResultShowScreen', { id });
+    };
 
     return (
         <View style={styles.container}>
@@ -17,7 +19,7 @@ const SearchResultList = (props: ISearchResultListProps) => {
                 keyExtractor={(result) => result.id}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity onPress={handleOnPressResulItemCard}>
+                        <TouchableOpacity onPress={() => handleOnPressResulItemCard(item.id)}>
                             <SearchResultItemCard item={item} />
                         </TouchableOpacity>
                     );
