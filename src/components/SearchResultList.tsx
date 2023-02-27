@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ISearchResultListProps } from '../interface/search.interface';
 import SearchResultItemCard from '../components/SearchResultItemCard';
+// import { useNavigation } from '@react-navigation/native';
 
 const SearchResultList = (props: ISearchResultListProps) => {
     const { title, results, navigation } = props;
@@ -11,6 +12,7 @@ const SearchResultList = (props: ISearchResultListProps) => {
 
     const handleOnPressResulItemCard = (id: string) => {
         navigation.navigate('ResultShowScreen', { id });
+        // const navigation = useNavigation(); Alternarive to passing of navigate props from parent to child
     };
 
     return (
