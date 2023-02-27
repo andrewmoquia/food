@@ -24,3 +24,25 @@ export const searchApi = async (params: ISearchApiParams): Promise<ISearchApiRes
         return { status: 500, data: e?.message || 'Something went wrong!' };
     }
 };
+
+export const searchOneApi = async (id: string): Promise<ISearchApiResponse> => {
+    try {
+        const config = {
+            method: 'GET',
+            url: `/${id}`,
+            baseURL: yelpBaseUrl,
+            headers: {
+                Authorization: `Bearer ${yelpApiKey}`,
+            },
+        };
+
+        const response = await axios(config);
+        return {
+            status: response?.status || 400,
+            data: response?.data?.businesses || response?.data || 'Unexpected error!',
+        };
+    } catch (error) {
+        const e = error as Error;
+        return { status: 500, data: e?.message || 'Something went wrong!' };
+    }
+};

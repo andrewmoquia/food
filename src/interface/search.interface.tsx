@@ -43,7 +43,36 @@ export interface ISearchData {
     distance?: number;
 }
 
+interface ISearchResultListNavigateProps {
+    id: string;
+}
+
 export interface ISearchResultListProps {
     title: string;
     results: ISearchData[];
+    navigation: {
+        navigate: (value: string, { id }: ISearchResultListNavigateProps) => void;
+    };
+}
+
+export interface ISearchResultItem {
+    item: ISearchData;
+}
+
+export interface ISearchScreenProps {
+    navigation: {
+        navigate: (value: string) => void;
+    };
+}
+
+export interface IResultShowScreenProps {
+    route?: {
+        params: { id: string };
+    };
+}
+
+export interface IResultData {
+    alias: string;
+    name: string;
+    photos: string[];
 }
