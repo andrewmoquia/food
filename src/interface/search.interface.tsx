@@ -73,4 +73,6 @@ export interface IResultShowScreenProps {
 
 export interface IResultData {
     alias: string;
+    name: string;
+    photos: string[];
 }
