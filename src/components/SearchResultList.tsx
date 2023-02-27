@@ -5,6 +5,10 @@ import SearchResultItemCard from '../components/SearchResultItemCard';
 const SearchResultList = (props: ISearchResultListProps) => {
     const { title, results, navigation } = props;
 
+    if (!results.length) {
+        return null;
+    }
+
     const handleOnPressResulItemCard = (id: string) => {
         navigation.navigate('ResultShowScreen', { id });
     };
